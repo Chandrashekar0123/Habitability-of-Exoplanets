@@ -3,6 +3,9 @@ import sqlite3
 import joblib
 import pandas as pd
 import os
+from flask import render_template
+
+
 
 # ----------------------------
 # App & Security
@@ -83,7 +86,11 @@ def prepare_input(user_data):
 # ----------------------------
 @app.route("/")
 def home():
-    return jsonify({"status": "API running"})
+    return jsonify({"status": "API is running"})
+
+@app.route("/ui")
+def ui():
+    return render_template("index.html")
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -136,6 +143,7 @@ def history():
         "count": len(rows),
         "data": rows
     })
+
 
 # ----------------------------
 # Run
