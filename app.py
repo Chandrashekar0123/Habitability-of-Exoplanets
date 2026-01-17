@@ -107,8 +107,17 @@ def predict():
 
     pred_class = int(model.predict(X)[0])
     prob = float(model.predict_proba(X)[0].max())
+    
+    LABEL_MAP = {
+        2: "Can Survive (Habitable)",
+        1: "Cannot Define Clearly (Potentially Habitable)",
+        0: "Cannot Survive (Not Habitable)"
+    }
 
-    rank = "High" if pred_class == 2 else "Medium" if pred_class == 1 else "Low"
+prediction_label = LABEL_MAP.get(pred_class, "Unknown")
+
+confidence = "High" if prob >= 0.75 else "Medium" if prob >= 0.5 else "Low"
+
 
     conn = get_db()
     cursor = conn.cursor()
@@ -121,10 +130,11 @@ def predict():
 
     return jsonify({
         "status": "success",
-        "prediction": pred_class,
+        "prediction_label": prediction_label,
         "habitability_score": round(prob, 3),
-        "rank": rank
+        "confidence": confidence
     })
+
 
 
 @app.route("/history", methods=["GET"])
