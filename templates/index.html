@@ -95,8 +95,12 @@ function predict() {
     ];
 
     document.getElementById("result").classList.remove("d-none");
-    document.getElementById("result").innerHTML =
-        "<strong>Prediction:</strong> Backend connected successfully";
+    document.getElementById("result").innerHTML = `
+    <strong>Prediction:</strong> ${data.prediction_label}<br>
+    <strong>Habitability Score:</strong> ${data.habitability_score}<br>
+    <strong>Confidence:</strong> ${data.confidence}
+`;
+
 
     renderChart(values);
 }
