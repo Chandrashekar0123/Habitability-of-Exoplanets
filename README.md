@@ -37,6 +37,78 @@ Your live deployed application is available at:
 ➡️ **https://habitability-of-exoplanets-hl2e.onrender.com/**
 
 ---
+## 📁 Repository Navigation (Tree with Explanation)
+
+Habitability-of-Exoplanets/
+│
+├── 📁 Dataset/  
+│   └── 📄 Exoplanet datasets used for training & preprocessing  
+│
+├── 📁 static/  
+│   ├── 📄 [style.css](static/style.css)  
+│   │   └── UI styling (layout, colors, responsiveness)  
+│   └── 📄 [chart.js](static/chart.js)  
+│       └── Feature visualization using Chart.js  
+│
+├── 📁 templates/  
+│   └── 📄 [index.html](templates/index.html)  
+│       └── Frontend UI (input form, prediction display)  
+│
+├── 📁 venv/  
+│   └── 📄 Virtual environment (ignored in Git)  
+│
+├── 📄 [.gitignore](.gitignore)  
+│   └── Git ignore rules  
+│
+├── 📄 [app.py](app.py)  
+│   └── Flask backend, ML inference, API routes  
+│
+├── 📄 [requirements.txt](requirements.txt)  
+│   └── Python dependencies  
+│
+├── 📄 [LICENSE](LICENSE)  
+│   └── MIT License  
+│
+├── 📄 [README.md](README.md)  
+│   └── Project documentation  
+│
+├── 📄 [exoplanets.db](exoplanets.db)  
+│   └── SQLite database storing prediction history  
+│
+├── 📄 [predictions.csv](predictions.csv)  
+│   └── Exported prediction results  
+│
+├── 📄 [view_db.py](view_db.py)  
+│   └── Script to view database records  
+│
+├── 📄 [feature_columns.pkl](feature_columns.pkl)  
+│   └── Stored feature order used during training  
+│
+├── 📄 [scaler.pkl](scaler.pkl)  
+│   └── Trained data scaler  
+│
+├── 📄 [xgb_habitability_model.pkl](xgb_habitability_model.pkl)  
+│   └── Trained XGBoost model  
+│
+├── 📄 [xgb_habitability_model.json](xgb_habitability_model.json)  
+│   └── Model architecture in JSON format  
+│
+├── 📄 [Confusion-Metrics.png](Confusion-Metrics.png)  
+│   └── Model performance visualization  
+│
+├── 📄 [exoplanet_preprocessed.csv](exoplanet_preprocessed.csv)  
+│   └── Cleaned dataset used for training  
+│
+├── 📄 [ExoPlanet_Habitability.ipynb](ExoPlanet_Habitability.ipynb)  
+│   └── EDA and model training notebook  
+│
+├── 📄 [Habitability.ipynb](Habitability.ipynb)  
+│   └── Additional experiments & analysis  
+│
+└── 📄 [Project learning document.docx](Project%20learning%20document.docx)  
+    └── Project notes and learnings
+
+---
 
 ## ⚙️ Installation Setup (Local)
 
@@ -122,7 +194,6 @@ python app.py
 **Response (Example)**
 ```
 {
-  "status": "success",
   "prediction_label": "Can Survive (Habitable)",
   "habitability_score": 0.88,
   "confidence": "High"
@@ -131,49 +202,19 @@ python app.py
 
 ---
 
-## 📁 Project Structure & Navigation
-
-Habitability-of-Exoplanets/
-│
-├── app.py
-│   ├─ Flask backend
-│   ├─ ML model loading & inference
-│   ├─ API routes (/predict, /history)
-│   └─ UI rendering
-│
-├── requirements.txt
-│   └─ Project dependencies
-│
-├── exoplanets.db
-│   └─ SQLite database storing predictions
-│
-├── xgb_habitability_model.pkl
-├── scaler.pkl
-├── feature_columns.pkl
-│   └─ Trained ML artifacts
-│
-├── templates/
-│   └── index.html
-│       └─ Web UI for habitability prediction
-│
-├── static/
-│   ├── style.css
-│   │   └─ UI styling
-│   └── chart.js
-│       └─ Feature visualization (Chart.js)
-│
-└── Dataset/
-    └── Exoplanet datasets
-
-
-
-*This structure cleanly separates backend logic, machine learning artifacts, UI, and datasets, making the project easy to understand, maintain, and extend.*
-
 
 ## 📄 License
 
-This project is licensed under the MIT License.
-See the LICENSE file for details.
+- This project is licensed under the MIT License.
+- See the LICENSE file for details.
+
+---
+
+## Thankings
+
+Special thanks to the **Infosys Springboard Virtual Internship program** and my mentor, **Bhanu Sir**, for their valuable guidance, support, and mentorship throughout this project.
+
+---
 
 ## 📬 Contact
 
