@@ -40,75 +40,42 @@ Your live deployed application is available at:
 ## 📁 Repository Navigation (Tree with Explanation)
 
 
-Habitability-of-Exoplanets/
+## 📁 Repository Navigation (with Explanation)
 
-│
-├── 📁 Dataset/  
-│   └── 📄 Exoplanet datasets used for training & preprocessing  
-│
-├── 📁 static/  
-│   ├── 📄 [style.css](static/style.css)  
-│   │   └── UI styling (layout, colors, responsiveness)  
-│   └── 📄 [chart.js](static/chart.js)  
-│       └── Feature visualization using Chart.js  
-│
-├── 📁 templates/  
-│   └── 📄 [index.html](templates/index.html)  
-│       └── Frontend UI (input form, prediction display)  
-│
-├── 📁 venv/  
-│   └── 📄 Virtual environment (ignored in Git)  
-│
-├── 📄 [.gitignore](.gitignore)  
-│   └── Git ignore rules  
-│
-├── 📄 [app.py](app.py)  
-│   └── Flask backend, ML inference, API routes  
-│
-├── 📄 [requirements.txt](requirements.txt)  
-│   └── Python dependencies  
-│
-├── 📄 [LICENSE](LICENSE)  
-│   └── MIT License  
-│
-├── 📄 [README.md](README.md)  
-│   └── Project documentation  
-│
-├── 📄 [exoplanets.db](exoplanets.db)  
-│   └── SQLite database storing prediction history  
-│
-├── 📄 [predictions.csv](predictions.csv)  
-│   └── Exported prediction results  
-│
-├── 📄 [view_db.py](view_db.py)  
-│   └── Script to view database records  
-│
-├── 📄 [feature_columns.pkl](feature_columns.pkl)  
-│   └── Stored feature order used during training  
-│
-├── 📄 [scaler.pkl](scaler.pkl)  
-│   └── Trained data scaler  
-│
-├── 📄 [xgb_habitability_model.pkl](xgb_habitability_model.pkl)  
-│   └── Trained XGBoost model  
-│
-├── 📄 [xgb_habitability_model.json](xgb_habitability_model.json)  
-│   └── Model architecture in JSON format  
-│
-├── 📄 [Confusion-Metrics.png](Confusion-Metrics.png)  
-│   └── Model performance visualization  
-│
-├── 📄 [exoplanet_preprocessed.csv](exoplanet_preprocessed.csv)  
-│   └── Cleaned dataset used for training  
-│
-├── 📄 [ExoPlanet_Habitability.ipynb](ExoPlanet_Habitability.ipynb)  
-│   └── EDA and model training notebook  
-│
-├── 📄 [Habitability.ipynb](Habitability.ipynb)  
-│   └── Additional experiments & analysis  
-│
-└── 📄 [Project learning document.docx](Project%20learning%20document.docx)  
-    └── Project notes and learnings
+- **Dataset/**
+  - Exoplanet datasets used for training and preprocessing
+
+- **static/**
+  - [`style.css`](static/style.css) — UI styling (layout, colors, responsiveness)
+  - [`chart.js`](static/chart.js) — Feature visualization using Chart.js
+
+- **templates/**
+  - [`index.html`](templates/index.html) — Frontend UI (input form & prediction display)
+
+- **venv/**
+  - Virtual environment (ignored in Git)
+
+- [`.gitignore`](.gitignore) — Git ignore rules  
+- [`app.py`](app.py) — Flask backend, ML inference & API routes  
+- [`requirements.txt`](requirements.txt) — Python dependencies  
+- [`LICENSE`](LICENSE) — MIT License  
+- [`README.md`](README.md) — Project documentation  
+
+- [`exoplanets.db`](exoplanets.db) — SQLite database storing prediction history  
+- [`predictions.csv`](predictions.csv) — Exported prediction results  
+- [`view_db.py`](view_db.py) — Script to inspect database records  
+
+- [`feature_columns.pkl`](feature_columns.pkl) — Stored feature order used during training  
+- [`scaler.pkl`](scaler.pkl) — Trained data scaler  
+- [`xgb_habitability_model.pkl`](xgb_habitability_model.pkl) — Trained XGBoost model  
+- [`xgb_habitability_model.json`](xgb_habitability_model.json) — Model architecture (JSON)  
+
+- [`Confusion-Metrics.png`](Confusion-Metrics.png) — Model performance visualization  
+- [`exoplanet_preprocessed.csv`](exoplanet_preprocessed.csv) — Cleaned training dataset  
+- [`ExoPlanet_Habitability.ipynb`](ExoPlanet_Habitability.ipynb) — EDA & model training notebook  
+- [`Habitability.ipynb`](Habitability.ipynb) — Additional experiments & analysis  
+- [`Project learning document.docx`](Project%20learning%20document.docx) — Project notes & learnings
+
 
 ---
 
@@ -220,5 +187,5 @@ Special thanks to the **Infosys Springboard Virtual Internship program** and my 
 
 ## 📬 Contact
 
-Developer: K. Chandrashekar Reddy
-GitHub: https://github.com/Chandrashekar0123
+- Developer: K. Chandrashekar Reddy
+- GitHub: https://github.com/Chandrashekar0123
