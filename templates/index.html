@@ -74,35 +74,68 @@
     </div>
 </div>
 
-<!-- Custom JS -->
+<!-- Chart helper JS -->
 <script src="{{ url_for('static', filename='chart.js') }}"></script>
 
 <script>
 let chartInstance = null;
 
-function predict() {
-    const values = [
-        Number(P_RADIUS.value),
-        Number(P_MASS.value),
-        Number(P_DENSITY.value),
-        Number(P_SURFACE_TEMP.value),
-        Number(P_PERIOD.value),
-        Number(P_DISTANCE.value),
-        Number(S_TYPE.value),
-        Number(S_LUMINOSITY.value),
-        Number(S_TEMPERATURE.value),
-        Number(S_METALLICITY.value)
-    ];
+async function predict() {
+
+    const payload = {
+        P_RADIUS: Number(P_RADIUS.value),
+        P_MASS: Number(P_MASS.value),
+        P_DENSITY: Number(P_DENSITY.value),
+        P_SURFACE_TEMP: Number(P_SURFACE_TEMP.value),
+        P_PERIOD: Number(P_PERIOD.value),
+        P_DISTANCE: Number(P_DISTANCE.value),
+        S_TYPE: Number(S_TYPE.value),
+        S_LUMINOSITY: Number(S_LUMINOSITY.value),
+        S_TEMPERATURE: Number(S_TEMPERATURE.value),
+        S_METALLICITY: Number(S_METALLICITY.value)
+    };
+
+    // Validation
+    for (let key in payload) {
+        if (isNaN(payload[key])) {
+            alert("Please fill all fields correctly");
+            return;
+        }
+    }
 
     document.getElementById("result").classList.remove("d-none");
-    document.getElementById("result").innerHTML = `
-    <strong>Prediction:</strong> ${data.prediction_label}<br>
-    <strong>Habitability Score:</strong> ${data.habitability_score}<br>
-    <strong>Confidence:</strong> ${data.confidence}
-`;
+    document.getElementById("result").innerHTML = "⏳ Predicting...";
 
+    try {
+        const response = await fetch("/predict", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": "habitability_api_2026"
+            },
+            body: JSON.stringify(payload)
+        });
 
-    renderChart(values);
+        const data = await response.json();
+
+        if (data.status !== "success") {
+            document.getElementById("result").innerHTML =
+                `<span class="text-danger">Error: ${data.message}</span>`;
+            return;
+        }
+
+        document.getElementById("result").innerHTML = `
+            <strong>Prediction:</strong> ${data.prediction_label}<br>
+            <strong>Habitability Score:</strong> ${data.habitability_score}<br>
+            <strong>Confidence:</strong> ${data.confidence}
+        `;
+
+        renderChart(Object.values(payload));
+
+    } catch (error) {
+        document.getElementById("result").innerHTML =
+            "<span class='text-danger'>Server error. Try again.</span>";
+    }
 }
 
 function renderChart(values) {
@@ -129,9 +162,7 @@ function renderChart(values) {
         options: {
             responsive: true,
             scales: {
-                y: {
-                    beginAtZero: true
-                }
+                y: { beginAtZero: true }
             }
         }
     });
