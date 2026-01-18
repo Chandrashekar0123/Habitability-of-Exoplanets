@@ -5,26 +5,26 @@ import pandas as pd
 import os
 
 # ----------------------------
-# App Initialization
+# App & Security
 # ----------------------------
 app = Flask(__name__)
 API_KEY = "habitability_api_2026"
 
 # ----------------------------
-# Paths
+# Paths (IMPORTANT)
 # ----------------------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "exoplanets.db")
 
 # ----------------------------
-# Load ML Components
+# Load ML components
 # ----------------------------
 model = joblib.load(os.path.join(BASE_DIR, "xgb_habitability_model.pkl"))
 scaler = joblib.load(os.path.join(BASE_DIR, "scaler.pkl"))
 feature_columns = joblib.load(os.path.join(BASE_DIR, "feature_columns.pkl"))
 
 # ----------------------------
-# Feature Mapping (UI → Model)
+# Feature mapping (USER → MODEL)
 # ----------------------------
 FEATURE_MAP = {
     "P_RADIUS": "P_RADIUS",
@@ -40,7 +40,7 @@ FEATURE_MAP = {
 }
 
 # ----------------------------
-# Database Helpers
+# Database helpers
 # ----------------------------
 def get_db():
     return sqlite3.connect(DB_PATH)
@@ -61,7 +61,7 @@ def create_table():
 create_table()
 
 # ----------------------------
-# Prepare Model Input
+# Prepare model input
 # ----------------------------
 def prepare_input(user_data):
     row = dict.fromkeys(feature_columns, 0)
@@ -84,6 +84,7 @@ def prepare_input(user_data):
 
 @app.route("/")
 def home():
+    # Serve UI at root
     return render_template("index.html")
 
 
@@ -107,18 +108,18 @@ def predict():
 
     pred_class = int(model.predict(X)[0])
     prob = float(model.predict_proba(X)[0].max())
-    
+
     LABEL_MAP = {
         2: "Can Survive (Habitable)",
-        1: "Cannot Define Clearly (Potentially Habitable)",
-        0: "Cannot Survive (Not Habitable)"
+        1: "Cannot Define Clearly",
+        0: "Cannot Survive"
     }
 
-prediction_label = LABEL_MAP.get(pred_class, "Unknown")
+    prediction_label = LABEL_MAP.get(pred_class, "Unknown")
 
-confidence = "High" if prob >= 0.75 else "Medium" if prob >= 0.5 else "Low"
+    confidence = "High" if prob >= 0.75 else "Medium" if prob >= 0.5 else "Low"
 
-
+    # Store in DB
     conn = get_db()
     cursor = conn.cursor()
     cursor.execute(
@@ -134,7 +135,6 @@ confidence = "High" if prob >= 0.75 else "Medium" if prob >= 0.5 else "Low"
         "habitability_score": round(prob, 3),
         "confidence": confidence
     })
-
 
 
 @app.route("/history", methods=["GET"])
