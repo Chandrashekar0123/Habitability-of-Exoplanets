@@ -72,7 +72,7 @@ Your live deployed application is available at:
 - [`exoplanet_preprocessed.csv`](exoplanet_preprocessed.csv) — Cleaned training dataset  
 - [`ExoPlanet_Habitability.ipynb`](ExoPlanet_Habitability.ipynb) — EDA & model training notebook  
 - [`Habitability.ipynb`](Habitability.ipynb) — Additional experiments & analysis  
-- [`Project learning document.docx`](Project%20learning%20document.docx) — Project notes & learnings
+- [`Project learning document.docx`](Project%20learning%20document.pdf) — Project notes & learnings
 
 
 ---
