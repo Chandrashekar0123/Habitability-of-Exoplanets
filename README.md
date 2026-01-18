@@ -37,8 +37,6 @@ Your live deployed application is available at:
 ➡️ **https://habitability-of-exoplanets-hl2e.onrender.com/**
 
 ---
-## 📁 Repository Navigation (Tree with Explanation)
-
 
 ## 📁 Repository Navigation (with Explanation)
 
