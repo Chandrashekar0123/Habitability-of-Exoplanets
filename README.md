@@ -48,9 +48,6 @@ Follow these steps to set up the project locally:
    git clone https://github.com/Chandrashekar0123/Habitability-of-Exoplanets.git
    cd Habitability-of-Exoplanets
 
-
-
-
 2. **Create a virtual environment**
    
 ```bash
@@ -74,3 +71,111 @@ python app.py
 
 **The server will start and be available at http://127.0.0.1:5000/.**
 
+---
+
+## 🧩 How to Use
+
+### 🧪 Using the Web UI
+
+1. Open the application homepage.
+2. Enter all required **planetary and stellar parameters**.
+3. Click **Predict Habitability**.
+4. The UI displays:
+   - **Prediction** (Can Survive / Cannot Survive / Cannot Define Clearly)
+   - **Habitability Score**
+   - **Confidence level**
+   - **Feature value bar chart**
+
+---
+
+### 📡 Using the API
+
+**Endpoint**
+**POST /predict**
+
+
+**Headers**
+```json
+{
+  "Content-Type": "application/json",
+  "x-api-key": "habitability_api_2026"
+}
+```
+
+**Request Body (Example)**
+
+```
+{
+  "P_RADIUS": 1.0,
+  "P_MASS": 1.1,
+  "P_DENSITY": 5.5,
+  "P_SURFACE_TEMP": 288,
+  "P_PERIOD": 365,
+  "P_DISTANCE": 1.0,
+  "S_TYPE": 1,
+  "S_LUMINOSITY": 1.0,
+  "S_TEMPERATURE": 5800,
+  "S_METALLICITY": 0.02
+}
+```
+
+**Response (Example)**
+```
+{
+  "status": "success",
+  "prediction_label": "Can Survive (Habitable)",
+  "habitability_score": 0.88,
+  "confidence": "High"
+}
+```
+
+---
+
+## 📁 Project Structure & Navigation
+
+Habitability-of-Exoplanets/
+│
+├── app.py
+│   ├─ Flask backend
+│   ├─ ML model loading & inference
+│   ├─ API routes (/predict, /history)
+│   └─ UI rendering
+│
+├── requirements.txt
+│   └─ Project dependencies
+│
+├── exoplanets.db
+│   └─ SQLite database storing predictions
+│
+├── xgb_habitability_model.pkl
+├── scaler.pkl
+├── feature_columns.pkl
+│   └─ Trained ML artifacts
+│
+├── templates/
+│   └── index.html
+│       └─ Web UI for habitability prediction
+│
+├── static/
+│   ├── style.css
+│   │   └─ UI styling
+│   └── chart.js
+│       └─ Feature visualization (Chart.js)
+│
+└── Dataset/
+    └── Exoplanet datasets
+
+
+
+*This structure cleanly separates backend logic, machine learning artifacts, UI, and datasets, making the project easy to understand, maintain, and extend.*
+
+
+## 📄 License
+
+This project is licensed under the MIT License.
+See the LICENSE file for details.
+
+## 📬 Contact
+
+Developer: K. Chandrashekar Reddy
+GitHub: https://github.com/Chandrashekar0123
